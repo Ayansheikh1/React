@@ -1,0 +1,30 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: beige;
+ 
+  padding: 20px;
+  
+
+}
+button{
+  padding:15px;
+  font-size: 15px;
+  border-radius: 3px;
+  color:rgba(2, 37, 25, 0.92);
+  background-color: aquamarine;
+
+
+}
+
+p{
+  font-size: 32px;
+}
+input{
+  height: 20px;
+ border-radius: 3px;
+ border: 2px solid rgba(2, 37, 25, 0.92);
+
+}
