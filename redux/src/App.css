@@ -1,6 +1,8 @@
 .container{
-  height: 600x;
-  width: 300px;
+  border: 3px dotted red;
+  height: 600x; 
+  width: 600px;
+  border-radius: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
