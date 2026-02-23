@@ -12,10 +12,20 @@ function App() {
   }
   const doubleValue = (num) => {
     console.log("calculating...")
+    for (let index = 0; index < 10000000000; index++) {
+      
+    }
     return num * 2;
   }
 
   const result = useMemo(() => { return doubleValue(count) }, [count]);
+  //useMemo optimizes value calculation, not re-render.
+
+// Component still re-renders when text changes
+
+// Only calculation is skipped
+
+// useMemo returned cached value
 
 
   return (
