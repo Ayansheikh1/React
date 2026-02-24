@@ -35,7 +35,7 @@ function App() {
       <input 
       type="Number"
       value={amount} 
-      placeholder='Enter Amount'
+      placeholder='Enter Amount '
       onChange={(e) => setAmount(e.target.value)}/>
       <br />
       <br />
