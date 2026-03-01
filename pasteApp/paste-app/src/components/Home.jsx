@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
+import {useDispatch} from  'react-redux'
+  import { addToPastes, updateTopaste } from '../redux/pasteSlice';
 
 const Home = () => {
     const [title, setTitle] = useState('');
@@ -7,6 +9,32 @@ const Home = () => {
     const pasteId = searchParam.get("pasteId");
 
     const [value, setvalue] = useState('');
+
+    const dispatch= useDispatch();
+
+    function createPaste(){
+      const paste ={
+        title: title,
+        content: value,
+        _id: pasteId || Date.now().toString(36),
+        createdAt: new Date().toISOString(),
+      }
+    
+      if(pasteId){
+        //update paste 
+        dispatch(updateTopaste(paste));
+      }
+      else{
+        //create paste
+        dispatch(addToPastes(paste));
+      }
+
+      setTitle(" ");
+      setvalue(" ");
+      setSearchParam({});
+
+
+    }
     
   return (
    <div>
@@ -19,7 +47,7 @@ const Home = () => {
       onChange={(e)=> setTitle(e.target.value)}
       />
 
-    <button  className='p-2 rounded border mt-2'>
+    <button onClick={createPaste} className='p-2 rounded border mt-2'>
         {pasteId ? "Update My Paste" : "Create my Paste"}
     </button>
 
@@ -29,7 +57,7 @@ const Home = () => {
 
     <div className='mt-4'>
       <textarea 
-      className='border rounded mt-4 p-2 min-w-[500px]' 
+      className='border rounded mt-4 p-2 min-w-125' 
       value={value}
       placeholder='enter content here'
       onChange={(e) => setvalue(e.target.value)}
