@@ -19,9 +19,9 @@ export const pasteSlice = createSlice({
     },
     updateTopaste: (state, action) => {
       const paste = action.payload;
-      const index = state.pastes.findIndex((item) => {
+      const index = state.pastes.findIndex((item) => 
         item._id === paste._id
-      });
+      );
 
       if (index >= 0) {
         state.pastes[index] = paste;

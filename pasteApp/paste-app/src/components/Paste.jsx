@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromPastes } from '../redux/pasteSlice';
 import { toast } from 'react-toast';
+import { Link } from "react-router";
 
 const Paste = () => {
 
@@ -62,8 +63,21 @@ const Paste = () => {
                     {paste.content}
                   </div>
                   <div className='flex flex-row gap-4 place-content-evenly'>
-                    <button>Edit</button>
-                    <button>View</button>
+                    <button>
+                      <Link to={`/?pasteId=${paste?._id}`}>
+                      Edit
+                      </Link>
+                      </button>
+                     {/* we can use <Link> tag if we are casting an internal navigation  .<Link >tag is more useful  cause  No page reload
+React handles navigation internally , Faster and smoother . */}
+
+                    <button>
+
+                      <Link to={`/pastes/${paste?._id}`}>
+                      View
+                      </Link>
+                    </button>
+
                     <button onClick={
                       () => handleDelete(paste?._id)
                     }>Delete</button>

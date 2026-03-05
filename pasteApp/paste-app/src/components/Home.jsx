@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import {useDispatch} from  'react-redux'
+import {useDispatch, useSelector} from  'react-redux'
   import { addToPastes, updateTopaste } from '../redux/pasteSlice';
 
 const Home = () => {
@@ -8,9 +8,10 @@ const Home = () => {
     const [searchParam, setSearchParam] = useSearchParams();
     const pasteId = searchParam.get("pasteId");
 
-    const [value, setvalue] = useState('');
+    const [value, setValue] = useState('');
 
     const dispatch= useDispatch();
+    const allPaste = useSelector((state) => state.paste.pastes);
 
     function createPaste(){
       const paste ={
@@ -30,11 +31,24 @@ const Home = () => {
       }
 
       setTitle(" ");
-      setvalue(" ");
+      setValue(" ");
       setSearchParam({});
 
 
     }
+
+    useEffect(() => {
+
+      if(pasteId){
+        const paste = allPaste.find((p) => p._id === pasteId);
+        setTitle(paste.title);
+        setValue(paste.content);
+
+      }
+      
+      
+    }, [pasteId])
+    
     
   return (
    <div>
@@ -60,7 +74,7 @@ const Home = () => {
       className='border rounded mt-4 p-2 min-w-125' 
       value={value}
       placeholder='enter content here'
-      onChange={(e) => setvalue(e.target.value)}
+      onChange={(e) => setValue(e.target.value)}
       rows={20}
       />
     </div>
