@@ -1,4 +1,4 @@
-import { createBrowserRouter , RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
@@ -12,31 +12,31 @@ function App() {
       {
         path: "/",
         element:
-        <div>
-          <Navbar />
-          <Home />
-        </div>
+          <div>
+            <Navbar />
+            <Home />
+          </div>
 
       },
       {
         path: "/pastes",
         element:
-        <div>
-          <Navbar />
-          <Paste />
+          <div>
+            <Navbar />
+            <Paste />
 
-     
-        </div>
+
+          </div>
 
       },
       {
         path: "/pastes/:id",
         element:
-        <div>
-          <Navbar />
-          <ViewPaste />
-          
-        </div>
+          <div>
+            <Navbar />
+            <ViewPaste />
+
+          </div>
 
       },
 
@@ -47,7 +47,7 @@ function App() {
   return (
     <div>
       <RouterProvider router={router}>
-      
+
       </RouterProvider>
     </div>
   )
